@@ -9,10 +9,12 @@ public class WaitPanel : BasePanel
 {
     public Button button;
 
+    private float Time = 5.0f;
+
     public override void InitFind()
     {
         base.InitFind();
-        button = FindTool.FindChildComponent<Button>(transform, "Image");
+        button = FindTool.FindChildComponent<Button>(transform, "bg");
     }
 
     public override void InitEvent()
@@ -20,13 +22,14 @@ public class WaitPanel : BasePanel
         base.InitEvent();
         button.onClick.AddListener(()=>{
             GenLuBuState.SwitchPanel(PanelName.CatalogPanel);
-            BGPanel.Instance.ShipHide();
         });
     }
 
-    public override void Open()
+    protected override void OnDestroy()
     {
-        base.Open();
-        BGPanel.Instance.ShipOpen();
+        base.OnDestroy();
+        TimeTool.Instance.Remove(TimeDownType.NoUnityTimeLineImpact, () => {
+            GenLuBuState.SwitchPanel(PanelName.WaitPanel);
+        });
     }
 }

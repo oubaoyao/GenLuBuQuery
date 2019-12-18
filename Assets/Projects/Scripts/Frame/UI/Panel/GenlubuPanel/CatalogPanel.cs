@@ -4,10 +4,19 @@ using UnityEngine;
 using MTFrame;
 using MTFrame.MTEvent;
 using UnityEngine.UI;
+using System;
 
 public class CatalogPanel : BasePanel
 {
-    public Button[] buttons; 
+    public Button[] buttons;
+
+    private float Time = 120.0f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        TimeTool.Instance.AddDelayed(TimeDownType.NoUnityTimeLineImpact, Time, ReturnWaitPanel);
+    }
 
     public override void InitFind()
     {
@@ -19,11 +28,11 @@ public class CatalogPanel : BasePanel
     {
         base.InitEvent();
         buttons[0].onClick.AddListener(() => {
-            GenLuBuState.SwitchPanel(PanelName.QueryPanel);
+            GenLuBuState.SwitchPanel(PanelName.UsagePanel);
         });
 
         buttons[1].onClick.AddListener(() => {
-            GenLuBuState.SwitchPanel(PanelName.UsagePanel);
+            GenLuBuState.SwitchPanel(PanelName.QueryPanel);
         });
 
         buttons[2].onClick.AddListener(() => {
@@ -31,13 +40,22 @@ public class CatalogPanel : BasePanel
         });
     }
 
-    public override void Open()
+    private void Update()
     {
-        base.Open();
+        if (Input.GetMouseButtonUp(0))
+        {
+            TimeTool.Instance.Remove(TimeDownType.NoUnityTimeLineImpact, ReturnWaitPanel);
+            TimeTool.Instance.AddDelayed(TimeDownType.NoUnityTimeLineImpact, Time, ReturnWaitPanel);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            TimeTool.Instance.Remove(TimeDownType.NoUnityTimeLineImpact, ReturnWaitPanel);
+        }
     }
 
-    public override void Hide()
+    private void ReturnWaitPanel()
     {
-        base.Hide();
+        GenLuBuState.SwitchPanel(PanelName.WaitPanel);
     }
 }
