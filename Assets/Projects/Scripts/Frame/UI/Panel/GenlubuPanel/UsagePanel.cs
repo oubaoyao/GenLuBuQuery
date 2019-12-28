@@ -9,14 +9,10 @@ public class UsagePanel : BasePanel
 {
     public Button BackButton;
 
-    public Transform Pointer_Long, Pointer_Short;
-
     public override void InitFind()
     {
         base.InitFind();
         BackButton = FindTool.FindChildComponent<Button>(transform, "backButton");
-        Pointer_Long = FindTool.FindChildNode(transform, "Pointers/Long");
-        Pointer_Short = FindTool.FindChildNode(transform, "Pointers/Short");
     }
 
     public override void InitEvent()
