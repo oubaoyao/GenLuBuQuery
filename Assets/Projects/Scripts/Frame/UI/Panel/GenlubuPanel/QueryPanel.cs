@@ -13,11 +13,13 @@ public class QueryPanel : BasePanel
 
     public RawImage BookImage;
 
-    public Texture[] BookTexture;
+    //public Texture[] BookTexture;
 
-    private int Current_Page = 0;
+    //private int Current_Page = 0;
 
     public BigPanel bigPanel;
+
+    public BookPro bookPro;
 
     public override void InitFind()
     {
@@ -28,7 +30,9 @@ public class QueryPanel : BasePanel
 
         bigPanel = FindTool.FindChildComponent<BigPanel>(transform, "BigPanel");
 
-        BookTexture = Resources.LoadAll<Texture>("书");
+        bookPro = FindTool.FindChildComponent<BookPro>(transform, "book/BookPro");
+
+        //BookTexture = Resources.LoadAll<Texture>("书");
     }
 
     public override void InitEvent()
@@ -38,13 +42,13 @@ public class QueryPanel : BasePanel
             GenLuBuState.SwitchPanel(PanelName.CatalogPanel);
         });
 
-        PageButtons[0].onClick.AddListener(() => {
-            Page_Privious();
-        });
+        //PageButtons[0].onClick.AddListener(() => {
+        //    Page_Privious();
+        //});
 
-        PageButtons[1].onClick.AddListener(() => {
-            Page_Next();
-        });
+        //PageButtons[1].onClick.AddListener(() => {
+        //    Page_Next();
+        //});
 
         BookImage.transform.GetComponent<Button>().onClick.AddListener(() => {
             bigPanel.Open();
@@ -54,12 +58,13 @@ public class QueryPanel : BasePanel
     public override void Open()
     {
         base.Open();
-        Current_Page = 0;
-        if (BookTexture != null && BookTexture.Length > 0)
-        {
-            BookImage.texture = BookTexture[Current_Page];
-        }
-            
+        bookPro.CurrentPaper = 1;
+        //Current_Page = 0;
+        //if (BookTexture != null && BookTexture.Length > 0)
+        //{
+        //    BookImage.texture = BookTexture[Current_Page];
+        //}
+
     }
 
     public override void Hide()
@@ -68,29 +73,29 @@ public class QueryPanel : BasePanel
         bigPanel.Hide();
     }
 
-    public void Page_Privious()
-    {
-        if(BookTexture!=null&& BookTexture.Length>0)
-        {
-            Current_Page--;
-            if(Current_Page <= 0)
-            {
-                Current_Page = 0;
-            }
-            BookImage.texture = BookTexture[Current_Page];
-        }
-    }
+    //public void Page_Privious()
+    //{
+    //    if(BookTexture!=null&& BookTexture.Length>0)
+    //    {
+    //        Current_Page--;
+    //        if(Current_Page <= 0)
+    //        {
+    //            Current_Page = 0;
+    //        }
+    //        BookImage.texture = BookTexture[Current_Page];
+    //    }
+    //}
 
-    public void Page_Next()
-    {
-        if (BookTexture != null && BookTexture.Length > 0)
-        {
-            Current_Page++;
-            if (Current_Page >= BookTexture.Length-1)
-            {
-                Current_Page = BookTexture.Length-1;
-            }
-            BookImage.texture = BookTexture[Current_Page];
-        }
-    }
+    //public void Page_Next()
+    //{
+    //    if (BookTexture != null && BookTexture.Length > 0)
+    //    {
+    //        Current_Page++;
+    //        if (Current_Page >= BookTexture.Length-1)
+    //        {
+    //            Current_Page = BookTexture.Length-1;
+    //        }
+    //        BookImage.texture = BookTexture[Current_Page];
+    //    }
+    //}
 }

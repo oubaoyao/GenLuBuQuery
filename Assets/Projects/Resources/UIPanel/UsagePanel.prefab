@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &910554049872940470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 779, y: 439}
+  m_SizeDelta: {x: 1090.6, y: 614.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8400243846434994857
 CanvasRenderer:
@@ -182,10 +182,10 @@ RectTransform:
   m_Father: {fileID: 7986711712462123181}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -589, y: -70}
-  m_SizeDelta: {x: 852, y: 518}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 449}
+  m_SizeDelta: {x: -727.19995, y: 725.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7743876006278844127
 CanvasRenderer:
@@ -561,6 +561,7 @@ MonoBehaviour:
   hideTweenTime: 0.5
   IsOpen: 1
   BackButton: {fileID: 8401495927339545377}
+  mediaPlayer: {fileID: 9035840681822190208}
 --- !u!1001 &3065010580737915443
 PrefabInstance:
   m_ObjectHideFlags: 0

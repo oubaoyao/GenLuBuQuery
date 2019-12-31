@@ -24,15 +24,15 @@ public class BigPanel : BasePanel
     public override void InitEvent()
     {
         base.InitEvent();
-        PageButtons[0].onClick.AddListener(() => {
-            queryPanel.Page_Privious();
-            SetBookTexture();
-        });
+        //PageButtons[0].onClick.AddListener(() => {
+        //    queryPanel.Page_Privious();
+        //    SetBookTexture();
+        //});
 
-        PageButtons[1].onClick.AddListener(() => {
-            queryPanel.Page_Next();
-            SetBookTexture();
-        });
+        //PageButtons[1].onClick.AddListener(() => {
+        //    queryPanel.Page_Next();
+        //    SetBookTexture();
+        //});
 
         BookImage.transform.GetComponent<Button>().onClick.AddListener(() => {
             Hide();
